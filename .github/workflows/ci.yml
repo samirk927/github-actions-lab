@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show repo info
+        run: |
+          echo "Branch: $GITHUB_HEAD_REF"
+          echo "SHA: $GITHUB_SHA"
+          ls -la
+
+      - name: Simple markdown check
+        run: |
+          test -f README.md
+          echo "README exists ✅"
