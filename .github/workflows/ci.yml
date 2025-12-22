@@ -18,5 +18,5 @@ jobs:
 
       - name: Simple markdown check
         run: |
-          test -f README.md
+          test -f README_DOES_NOT_EXIST.md
           echo "README exists ✅"
