@@ -4,3 +4,4 @@
 
 
 # ci registration
+cache hit check
