@@ -1,4 +1,4 @@
-name: PR CI
+name: CI
 
 on:
   pull_request:
@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   test:
-    name: tests (py${{ matrix.python-version }})
+    name: test (py${{ matrix.python-version }})
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -42,7 +42,7 @@ jobs:
           pytest -q
 
   summary:
-    name: ci summary
+    name: summary
     runs-on: ubuntu-latest
     needs: [test]
     if: always()
