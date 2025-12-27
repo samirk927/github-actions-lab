@@ -57,3 +57,15 @@ jobs:
       - name: Fail if tests failed
         if: needs.test.result != 'success'
         run: exit 1
+  secrets-check:
+    name: secrets-check
+    runs-on: ubuntu-latest
+    needs: [test]
+    environment: dev
+    steps:
+      - name: Check repo secret
+        run: |
+          if [ -n "${{ secrets.DEMO_SECRET }}" ]; then echo "DEMO_SECRET is set"; else echo "DEMO_SECRET is missing"; fi
+      - name: Check env secret
+        run: |
+          if [ -n "${{ secrets.ENV_SECRET }}" ]; then echo "ENV_SECRET is set"; else echo "ENV_SECRET is missing"; fi
